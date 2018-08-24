@@ -1,0 +1,7 @@
+.TAGS
+CodeNarcReport.html
+build
+.gradle
+*.tar.gz
+*.zip
+cache
