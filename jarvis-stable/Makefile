@@ -2,18 +2,22 @@
 #
 # The files implements the release pipeline interface
 # It defines a target for each task executed during the release pipeline
+# This file shall always be found at the root of the neon source code
 #
+#proxy values for npm or yarn
+HTTP_PROXY=http://gproxy.vip.dailymotion.com:8888
+HTTPS_PROXY=http://gproxy.vip.dailymotion.com:8888
+PROXY = --proxy=$(HTTP_PROXY) --https-proxy=$(HTTPS_PROXY)
 
-BUILD_IMAGE=mikanolab/release-gradle:latest
 
 #This wraps the execution of yarn task into docker for local emulation of ci context
-exec = docker run --rm -it -v ${PWD}:/data/release/pipelines $(BUILD_IMAGE)
+wrapper = docker run --user root --rm -it -v ${PWD}:/data/release/pipelines dailymotion/groovy-agent
 
 ifeq ($(CI),true)
-	exec =
+	wrapper =
 endif
 
-.DEFAULT_GOAL := list-tasks
+.DEFAULT_GOAL := tasks.list
 
 tasks.list:	##@ List available tasks on this project
 	@grep -E '^[a-zA-Z\.\-]+:.*?##@ .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?##@ "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -27,19 +31,19 @@ tasks.list:	##@ List available tasks on this project
 
 
 #installing all dependencies and compiling project
-code-compile: ##@ compile and install dependencies
-	$(exec) gradlew assemble
+code.compile: ##@ compile and install dependencies
+	$(wrapper) ./gradlew assemble --stacktrace
 
 #checkstyles analysis
-code-lint: ##@ static analysis for code style violations
-	$(exec) gradlew check
+code.lint: ##@ static analysis for code style violations
+	$(wrapper) ./gradlew check
 
 #unit testing
-test-unit: ##@ run unit test suite against source
-	$(exec) gradlew test
+unit.test: ##@ run unit test suite against source
+	$(wrapper) ./gradlew test
 
-release-tag: ##@ create a versionned release package
-	$(exec) tar -czvf $(package_name).tar.gz src vars resources doc
+release.package: ##@ create a versionned release package
+	$(wrapper) tar -czvf $(package_name).tar.gz src vars resources doc
 
 doc.update: ##@ update documentation
 	doc/aggregate-doc.sh || true

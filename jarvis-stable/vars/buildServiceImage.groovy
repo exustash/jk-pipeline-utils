@@ -1,15 +1,15 @@
 #!/usr/bin/env groovy
 
 /**
- * Build container images of docker-compose services
- * @param  serviceName
- * @return
+ * [call description]
+ * @param  serviceName       [description]
+ * @return                   [description]
  */
- Void call(String stackName) {
+ Void call(String serviceName) {
      reportBuildStatus("release/pipeline/service.build", "Pipeline Task service.build is runing", 'PENDING')
      try {
-         println "---> Building ${stackName} Docker image ${stackName}"
-         sh(returnStdout: false, script: "docker-compose -p ${stackName} -f docker-compose.yml build --no-cache")
+         println "---> Building ${serviceName} Docker image ${serviceName}"
+         sh(returnStdout: false, script: "docker-compose -f docker-compose.yml build --no-cache")
          reportBuildStatus("release/pipeline/service.build", "Pipeline Task service.build has succeeded", 'SUCCESS')
      } catch (err) {
         reportBuildStatus("release/pipeline/service.build", "Pipeline Task service.build has failed", 'FAILURE')

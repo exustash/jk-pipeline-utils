@@ -1,0 +1,27 @@
+commands:
+  - d.install:
+      name: install.deps
+  - s.lint.dockerfile:
+      name: docker.linting
+  - s.lint.code:
+      name: code.linting
+  - s.complexity:
+      name: code.complexity
+  - s.security:
+      code: code.security
+  - t.unit:
+      name: unit.testing
+  - t.func:
+      name: functional.testing
+  - t.integ:
+      name: integration.testing
+  - t.perf:
+      name: performance.testing
+  - p.build:
+      name: build.package
+  - p.deploy:
+      name: deploy.package
+  - p.rollback:
+      name: rollback.package
+  - r.publish:
+      name: publish.release
