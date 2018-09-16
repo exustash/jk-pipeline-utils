@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-package com.checkmate.summaries
+package org.mikanolab.reports
 
 import hudson.tasks.junit.CaseResult
 import com.cloudbees.groovy.cps.NonCPS
@@ -10,22 +10,22 @@ import hudson.tasks.test.AbstractTestResultAction
  * @return String containing the results
  */
 @NonCPS
-String getSummary () {
-    AbstractTestResultAction testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
-    String summary = ""
+String getReports () {
+    AbstractTestResultAction testReportAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
+    String report = ""
 
-    if (testResultAction != null) {
-        total = testResultAction.getTotalCount()
-        failed = testResultAction.getFailCount()
-        skipped = testResultAction.getSkipCount()
+    if (testReportAction != null) {
+        total = testReportAction.getTotalCount()
+        failed = tesReportAction.getFailCount()
+        skipped = tesReportAction.getSkipCount()
 
-        summary = "Passed: " + (total - failed - skipped)
-        summary = summary + (", Failed: " + failed)
-        summary = summary + (", Skipped: " + skipped)
+        report = "Passed: " + (total - failed - skipped)
+        report = report + (", Failed: " + failed)
+        report = report + (", Skipped: " + skipped)
     } else {
-        summary = "No tests found"
+        report = "No tests found"
     }
-    return summary
+    retureportort
 }
 
 /**
@@ -34,11 +34,11 @@ String getSummary () {
  */
 @NonCPS
 String getFailures() {
-    AbstractTestResultAction testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
+    AbstractTestResultAction testReportAction = currentBuild.rawBuild.getAction(AbstractTestReportAction.class)
     String failedTestsString = "```"
 
-    if (testResultAction != null) {
-        String failedTests = testResultAction.getFailedTests()
+    if (testReportAction != null) {
+        String failedTests = testReportAction.getFailedTests()
 
         if (failedTests.size() > 9) {
             failedTests = failedTests.subList(0, 8)
