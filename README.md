@@ -20,11 +20,11 @@ All available function in this library are documented [here](doc/functions.md)
 
 Every function is referenced this way:
  - **Name:** the  by which the function will be called as pipeline step
- - **Short Overview:** a short definition explaining what the function does
  - **Description:** an detailed function signature with some explanation when necessary
  - **Parameters:** a detailed description of parameters of the function when needed
  - **Return Values:** a detailed description of the return values of the function when needed
- - **Example:** an example of the function usage with explanation if relevant.
+ - **Usage:** an example of the function usage with explanation if relevant.
 
 
 ## Contribution
+[here](CONTRIBUTING.md)
