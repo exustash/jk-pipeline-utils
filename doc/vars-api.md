@@ -935,7 +935,7 @@ Runs a given pipeline task with error handling
 
 ### Description  
 ```groovy
-runPipelineTask(String taskRunner, String taskCmd)
+execPipelineTask(String taskRunner, String taskCmd)
 ```
 
 This function is to be used in the context of a task executable in the pipeline through as 'sh' step.
@@ -949,7 +949,7 @@ This function is to be used in the context of a task executable in the pipeline 
 
 ### Examples
 ```groovy
-runPipelineTask('t.unit ci=true', 'make')
+execPipelineTask('t.unit ci=true', 'make')
 ```
 
 The above example will execute **unit tests** using **Make binary** and report build status to GitHub

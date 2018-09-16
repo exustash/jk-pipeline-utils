@@ -1,17 +1,15 @@
 #!/usr/bin/env groovy
-@Library(value="jarvis@stable", changelog=false) _
+@Library(value="pennyworth@master", changelog=false) _
 
 pipeline {
 
   agent {
-    label 'gradle-agent'
+    label 'gradle-executor'
   }
 
   environment {
-    SERVICE_NAME = 'jarvis'
-    SLACK_CHANNEL = 'release-platform'
     CI = 'true'
-    GITHUB_TOKEN=credentials('2671f6e0-d7ee-4746-8711-ef9b2ed57dae')
+    LIBRARY_NAME = "pennyworth"
   }
 
   options {
@@ -21,7 +19,7 @@ pipeline {
   stages {
     stage('Build'){
       steps {
-        runPipelineTask('make', 'code.compile')
+        execPipelineTask('make', 'install-deps')
       }
     }
 
@@ -29,10 +27,10 @@ pipeline {
       steps {
           parallel(
             "code linting": {
-                runPipelineTask('make', 'code.lint')
+                execPipelineTask('make', 'lint-code')
             },
             "unit testing": {
-                runPipelineTask('make', 'unit.test')
+                execPipelineTask('make', 'test-unit')
             }
           )
       }
@@ -50,16 +48,13 @@ pipeline {
         when {
             anyOf {
                 branch 'master'
-                branch 'beta'
             }
         }
         steps {
             script {
                 releaseLog = git.getCommitMsg()
                 releaseTag = getReleaseVersion()
-                packageName = "${env.SERVICE_NAME}."+git.getCurrentBranch()
-                runPipelineTask('make', "release.assemble package_name=${packageName}")
-                pushReleaseToGH("${env.SERVICE_NAME}", packageName, releaseTag, releaseLog)
+                pushGitTag(releaseTag, releaseLog)
             }
         }
         post {
