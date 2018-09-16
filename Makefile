@@ -20,15 +20,15 @@ help:
 	@grep -E '[a-zA-Z\.\-]+:.*?@ .*$$' $(MAKEFILE_LIST)| tr -d '#'  | awk 'BEGIN {FS = ":.*?@ "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 
-#code.compile: ##@ compile and install dependencies
+#code-compile: ##@ compile and install dependencies
 code-compile:
 	$(exec) gradle assemble
 
-#code.lint: ##@ static analysis for code style violations
+#code-lint: ##@ static analysis for code style violations
 code-lint:
 	$(exec) gradle check
 
-#test.unit: ##@ run unit test suite against source
+#test-unit: ##@ run unit test suite against source
 test-unit:
 	$(exec) gradle test
 
