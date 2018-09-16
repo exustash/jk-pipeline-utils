@@ -9,7 +9,7 @@ Void call(String state, String description, String gitRef, String deployEnv) {
     try {
         String deploymentId = deployExists(ref, 'deploy', 'staging') ?: this.createDeployment(ref, description, environment)
 
-        withCredentials([string(credentialsId: '2671f6e0-d7ee-4746-8711-ef9b2ed57dae', variable: 'GITHUB_TOKEN')]) {
+        withCredentials([string(credentialsId: 'githubtokenid', variable: 'GITHUB_TOKEN')]) {
             String payload = JsonOutput.toJson(["state": "${state}", "target_url": "", "description": "${description}"])
             String apiUrl = "https://api.github.com/repos/checkmate/${env.REPO_SLUG}/deployments/${deploymentId}/statuses"
             sh returnStdout: false, script: """curl -s -H \"Authorization: Token ${env.GITHUB_TOKEN}\" -H \"Accept: application/json\" -H \"Content-type: application/json\" -X POST -d '${payload}' ${apiUrl}"""
