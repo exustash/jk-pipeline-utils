@@ -21,14 +21,14 @@ help:
 
 
 #code.compile: ##@ compile and install dependencies
-code.compile:
+code-compile:
 	$(exec) gradle assemble
 
 #code.lint: ##@ static analysis for code style violations
-code.lint:
+code-lint:
 	$(exec) gradle check
 
 #test.unit: ##@ run unit test suite against source
-test.unit:
+test-unit:
 	$(exec) gradle test
 
