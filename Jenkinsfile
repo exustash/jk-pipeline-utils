@@ -10,6 +10,7 @@ pipeline {
   environment {
     CI = 'true'
     LIBRARY_NAME = "pennyworth"
+    SLACK_CHANNEL = "release-train"
   }
 
   options {
@@ -59,10 +60,10 @@ pipeline {
         }
         post {
             success {
-                sendPipelineStatusToSlack('SUCCESS', 'Release published on repo')
+                sendNotifToSlack('SUCCESS', 'Release published on repo')
             }
             failure {
-                sendPipelineStatusToSlack('FAILURE', 'Release published on repo')
+                sendNotifToSlack('FAILURE', 'Release published on repo')
             }
         }
     }
