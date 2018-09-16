@@ -3,7 +3,7 @@
 /**
 * Run a release pipeline task with or without status report
 */
-Void call(String taskRunner, String taskCmd, Boolean report=true) {
+Void call(String taskRunner, String taskCmd, Boolean report=false) {
     String task = "${taskRunner} ${taskCmd}"
     switch (report) {
         case false:
