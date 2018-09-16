@@ -1,17 +1,6 @@
 ## Contribution
 Please review these guidelines in order to make effective contributions to this project.
 
-### Pull requests
-Good pull requests - patches, improvements, new features - are a fantastic help. They should remain focused in scope and **avoid duplication** of features and functionalities.
-
-Before embarking on coding for any significant pull request please discuss with everyone involved in this project and adhere to the following Prerequisites and conventions.
-
-**PR Prerequisite questions:**
-- Does the feature (function) already exist in the library?
-- If the feature (function) exists, should it be improved or fixed?
-- If improvement or fixes are needed, do i preserve or break compatibility?
-
-
 **Coding conventions** used throughout a project (indentation, accurate comments, etc.) and any other requirements...
 [http://groovy-lang.org/style-guide.html](http://groovy-lang.org/style-guide.html)
 
