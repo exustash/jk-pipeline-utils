@@ -12,7 +12,7 @@ Ths shared library contains a wide range of functionalities accessible as pipeli
 
 ```groovy
 #!/usr/bin/env groovy
-@Library(value="pennyworths@master", changelog=false) _
+@Library(value="pennyworth@master", changelog=false) _
 ```
 
 ## Documentation
