@@ -18,7 +18,7 @@ buildAgentImage(String imageName, String imageTag='latest', String filePath='.')
 ### Examples
 
 ```groovy
-buildDockerImage('fixtures-agent', "latest", 'fixtures/.' )
+buildDockerImage('gradle-image', "latest.tag", '.' )
 ```
 
 The above example build the image checkmate/fixtures-agent with tag latest based using fixtures/Dockerfile
