@@ -9,7 +9,7 @@ Void call(String namespace, String imageName, String imageTag) {
 
     reportBuildStatus("release/pipeline/container-image.build", "Task container-image.build is runing", 'PENDING')
     try {
-            useDockerHost("${containerHost}") {
+            withDockerHost("${containerHost}") {
                     println "---> Building version ${imageTag} of containr image ${repository}/${image.name}"
                     sh "docker build -t ${repository}/${image.name}:${imageTag} ${image.path}"
                 }
