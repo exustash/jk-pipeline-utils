@@ -7,7 +7,7 @@
  */
 Void call(String remoteHost, String localPath, String remotePath) {
     try {
-        println "---> Download from ${remotePath} to ${localPath} ####"
+        println "---> Downloading from ${remoteHost}::${remotePath} to ${localPath} ####"
         sh returnStdout: false, script: "mkdir -p /tmp/${localPath}"
         sh returnStdout: false, script: "rm -rf /tmp/${localPath}/*"
         sh returnStdout: false, script: "rsync --exclude .git -a ${remoteHost}::${remotePath}/ /tmp/${localPath}/"
