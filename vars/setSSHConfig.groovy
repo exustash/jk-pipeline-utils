@@ -8,7 +8,7 @@ Void call() {
     try {
         if (isCredentailsSet() == false) {
             withCredentials([sshUserPrivateKey(
-            credentialsId: 'bfb451d9-17f1-4586-9d55-2936dee3fcd3',
+            credentialsId: 'jenkins-credetials-id',
             keyFileVariable: 'RELEASE_KEY',
             usernameVariable: 'RELEASE_KEY_USR',
             )]) {
@@ -21,7 +21,7 @@ Void call() {
             }
         }
     } catch (err) {
-        error("[ERR!] Pipeline execution error: ${err.message}")
+        error("[Error!] Pipeline execution error: ${err.message}")
     }
 }
 
