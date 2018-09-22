@@ -1,15 +1,18 @@
-#!/usr/bin/env groovy
+## getShortBuildName
+Implements a step that create a tag based on the name and number of jenkins build
 
-Void call() {
-    reportBuildStatus('release/pipeline/quality.report', 'Task quality.report is running', 'PENDING')
-    try {
-        String scannerHome = tool "ScanerHome"; //change the name of scanerhome to the your liking
-        withSonarQubeEnv {
-            sh returnStdout: false, script: "${scannerHome}/bin/sonar-scanner"
-        }
-        reportBuildStatus('release/pipeline/quality.report', 'Task quality.report has suceeded', 'SUCCESS')
-    } catch (err) {
-        reportBuildStatus('release/pipeline/quality.report', 'Task quality.report has failed', 'FAILURE')
-        error("[ERR!] Pipeline execution error: ${err.message}")
-    }
-}
+### Description
+```groovy
+getShortBuildName (Int numberOfDirectories = 2)
+```
+
+### Parameters
+  - numberOfDdirectories
+
+### Return Values
+  Return a build tag as a string
+
+### Examples
+```groovy
+getShortBuildName(int numberOfDirectories = 2)
+```
