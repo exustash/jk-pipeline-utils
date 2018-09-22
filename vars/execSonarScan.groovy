@@ -3,7 +3,7 @@
 Void call() {
     reportBuildStatus('release/pipeline/quality.report', 'Task quality.report is running', 'PENDING')
     try {
-        String scannerHome = tool "Inspect02Scanner";
+        String scannerHome = tool "ScanerHome"; //change the name of scanerhome to the your liking
         withSonarQubeEnv {
             sh returnStdout: false, script: "${scannerHome}/bin/sonar-scanner"
         }

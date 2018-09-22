@@ -5,14 +5,14 @@
  * @param versionning scheme
  * @return the version number as a string
  */
-String call(String versionType='hash') {
+String call(String environment='prod') {
     println '---> construct and return a release version'
     switch(versionType) {
-        case 'semver':
-            version = '1.0.0'
+        case 'stage':
+            version = "stage.${git.getCommitHash()}"
         break
-        case 'build':
-            version = getBuildVer()
+        case 'dev':
+            version = "dev.${git.getCommitHash()}"
         break
         default:
             version = git.getCommitHash()

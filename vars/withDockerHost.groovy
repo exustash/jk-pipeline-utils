@@ -7,13 +7,14 @@
  * @return             [description]
  */
 Void call(String contextName, Closure body) {
+    //change tcp adresses to the one of your liking
     Map dockerHosts = [
-        slave: "tcp://releaseslave-01.ear.thxcheckmate.com:4243",
-        master: "tcp://inspect-02.ear.thxcheckmate.com:4243"
+        executor: "tcp://executor.checkmate.io:4243",
+        orchestrator: "tcp://orchestrator.checkmate.io:4243"
     ]
 
-    if (contextName != "slave" && contextName != "master") {
-        throw new GroovyRuntimeException("${contextName} not supported, choose either 'master' or 'slave'")
+    if (contextName != "slave" && contextName != "orchestrator") {
+        throw new GroovyRuntimeException("${contextName} not supported, choose either 'orchestrator' or 'executor'")
     }
 
     println "Use ${contextName} host"
@@ -29,5 +30,5 @@ Void call(String contextName, Closure body) {
  * @return      [description]
  */
 Void call(Closure body) {
-    call("slave", body)
+    call("executor", body)
 }
