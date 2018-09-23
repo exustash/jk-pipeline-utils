@@ -2,24 +2,24 @@
 
 /**
  * [call description]
- * @param  contextName [description]
+ * @param  hostName [description]
  * @param  body        [description]
  * @return             [description]
  */
-Void call(String contextName, Closure body) {
+Void call(String hostName, Closure body) {
     //change tcp adresses to the one of your liking
-    Map dockerHosts = [
-        executor: "tcp://executor.checkmate.io:4243",
-        orchestrator: "tcp://orchestrator.checkmate.io:4243"
+    Map containerHosts = [
+        worker: "tcp://worker.container.host.io:4243",
+        primary: "tcp://primary.container.host.io:4243"
     ]
 
-    if (contextName != "worker" && contextName != "orchestrator") {
-        throw new GroovyRuntimeException("${contextName} not supported, choose either 'orchestrator' or 'executor'")
+    if (hostName != "worker" && hostName != "primaryd") {
+        throw new GroovyRuntimeException("${hostName} not supported, choose either primary or worker")
     }
 
-    println "Use ${contextName} host"
+    println "Use ${hostName} host"
 
-    docker.withServer(dockerHosts[contextName]) {
+    docker.withServer(dockerHosts[hostName]) {
         body()
     }
 }
