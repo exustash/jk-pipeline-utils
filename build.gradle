@@ -14,13 +14,13 @@ plugins {
 
 dependencies {
     // Use the latest Groovy version for building this library
+    compile 'org.kohsuke.stapler:stapler:1.254'
+    compile 'com.cloudbees:groovy-cps:1.24'
+    compile 'org.dom4j:dom4j:2.1.0'
     compile 'org.codehaus.groovy:groovy-all:2.4.13'
     compile 'org.jenkins-ci.plugins:pipeline-utility-steps:1.5.1@jar'
     compile 'org.jenkins-ci.plugins:docker-workflow:1.9'
     compile 'org.eclipse.hudson:hudson-core:3.2.1'
-    compile 'org.kohsuke.stapler:stapler:1.254'
-    compile 'com.cloudbees:groovy-cps:1.24'
-    compile 'org.dom4j:dom4j:2.1.0'
     compile group: 'org.jenkins-ci.ui', name: 'ace-editor', version: '1.1'
     compileOnly 'javax.servlet:servlet-api:2.5'
 
