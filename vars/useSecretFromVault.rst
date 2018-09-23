@@ -1,23 +1,23 @@
 ## withSecretFileFromVault
 
-Fetch a secret file from Vault and use it into the closure.
-After the closure execution, the file given in parameter is deleted.
+Fetch a secret from Vault server, write the secret into a file.
+After usage within the closure the file is deleted.
 
 ### Parameters
 
-* **secretPath:** path in vault. e.g. secret/jenkins/scale/clusters-credentials
+* **secretPath:** path in vault. e.g. secret/file/path
 * **key:** vault key e.g. kubecfg
 * **filepath:** file path of where the secret will be dumped
 
 ### Examples
 
 ```groovy
-def secretFilePath = "path/to/secret-file"
+def secretFilePath = "secret/path/file"
 withSecretFileFromVault(
-    "secret/jenkins/scale/clusters-credentials",
-    "kubecfg",
+    "secret/path/file",
+    "sshconfig",
     secretFilePath
 ) {
-    sh "docker -v ${secretFilePath}:/file/path myimage"
+    sh "..."
 }
 ```
