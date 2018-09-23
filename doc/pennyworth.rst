@@ -192,7 +192,7 @@ gazrComplexity()
 
 ## Parameters
 
-* dockerContext - master|slave _(optional)_
+* dockerContext - primary|slave _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -200,13 +200,13 @@ gazrComplexity()
 ```groovy
 gazrComplexity()
 
-gazrComplexity("master")
+gazrComplexity("primary")
 
 gazrComplexity {
     echo "hello world"
 }
 
-gazrComplexity("master") {
+gazrComplexity("primary") {
     echo "hello world"
 }
 ```
@@ -228,7 +228,7 @@ gazrFormat()
 
 ## Parameters
 
-* dockerContext - master|slave _(optional)_
+* dockerContext - primary|slave _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -236,13 +236,13 @@ gazrFormat()
 ```groovy
 gazrFormat()
 
-gazrFormat("master")
+gazrFormat("primary")
 
 gazrFormat {
     echo "hello world"
 }
 
-gazrFormat("master") {
+gazrFormat("primary") {
     echo "hello world"
 }
 ```
@@ -264,7 +264,7 @@ gazrStyle()
 
 ## Parameters
 
-* dockerContext - master|slave _(optional)_
+* dockerContext - primary|slave _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -272,13 +272,13 @@ gazrStyle()
 ```groovy
 gazrStyle()
 
-gazrStyle("master")
+gazrStyle("primary")
 
 gazrStyle {
     echo "hello world"
 }
 
-gazrStyle("master") {
+gazrStyle("primary") {
     echo "hello world"
 }
 ```
@@ -300,7 +300,7 @@ gazrTestFunctional()
 
 ## Parameters
 
-* dockerContext - master|slave _(optional)_
+* dockerContext - primary|slave _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -308,13 +308,13 @@ gazrTestFunctional()
 ```groovy
 gazrTestFunctional()
 
-gazrTestFunctional("master")
+gazrTestFunctional("primary")
 
 gazrTestFunctional {
     echo "hello world"
 }
 
-gazrTestFunctional("master") {
+gazrTestFunctional("primary") {
     echo "hello world"
 }
 ```
@@ -336,7 +336,7 @@ gazrTestIntegration()
 
 ## Parameters
 
-* dockerContext - master|slave _(optional)_
+* dockerContext - primary|slave _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -344,13 +344,13 @@ gazrTestIntegration()
 ```groovy
 gazrTestIntegration()
 
-gazrTestIntegration("master")
+gazrTestIntegration("primary")
 
 gazrTestIntegration {
     echo "hello world"
 }
 
-gazrTestIntegration("master") {
+gazrTestIntegration("primary") {
     echo "hello world"
 }
 ```
@@ -372,7 +372,7 @@ gazrTest()
 
 ## Parameters
 
-* dockerContext - master|slave _(optional)_
+* dockerContext - primary|slave _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -380,13 +380,13 @@ gazrTest()
 ```groovy
 gazrTest()
 
-gazrTest("master")
+gazrTest("primary")
 
 gazrTest {
     junit "reports/report_unit_tests.xml"
 }
 
-gazrTest("master") {
+gazrTest("primary") {
     junit "reports/report_unit_tests.xml"
 }
 ```
@@ -408,7 +408,7 @@ gazrTestUnit()
 
 ## Parameters
 
-* dockerContext - master|slave _(optional)_
+* dockerContext - primary|slave _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -416,13 +416,13 @@ gazrTestUnit()
 ```groovy
 gazrTestUnit()
 
-gazrTestUnit("master")
+gazrTestUnit("primary")
 
 gazrTestUnit {
     junit "reports/report_unit_tests.xml"
 }
 
-gazrTestUnit("master") {
+gazrTestUnit("primary") {
     junit "reports/report_unit_tests.xml"
 }
 ```
@@ -585,19 +585,19 @@ Check if the current branch is equals to an arbitrary value.
 Execute something is the current branch is equals to a value.
 
 ```groovy
-// env.BRANCH_NAME equals to "prod" or "master"
-def isOk = isBranch(["prod", "master"])
+// env.BRANCH_NAME equals to "prod" or "primary"
+def isOk = isBranch(["prod", "primary"])
 ```
 
 ## Parameters
 
-* branches _(String or List)_ - e.g. "prod" or ["prod", "master"]my-local-image:latest
+* branches _(String or List)_ - e.g. "prod" or ["prod", "primary"]my-local-image:latest
 
 ## Examples
 
 ```groovy
-// env.BRANCH_NAME equals to "prod" or "master"
-def isOk = isBranch(["prod", "master"])
+// env.BRANCH_NAME equals to "prod" or "primary"
+def isOk = isBranch(["prod", "primary"])
 
 // env.BRANCH_NAME equals to "prod"
 def isOk = isBranch("prod")
@@ -612,14 +612,14 @@ Launch the "make down" makefile recipe.
 
 ## Parameters
 
-* dockerContext - master|slave _(optional)_
+* dockerContext - primary|slave _(optional)_
 # makeDownOnFailure
 
 Put a try/catch around a script and execute the "make down" makefile recipe if an error is thrown.
 
 ## Parameters
 
-* dockerContext - master|slave _(optional)_
+* dockerContext - primary|slave _(optional)_
 
 ## Examples
 
@@ -628,7 +628,7 @@ makeDownOnFailure {
     echo "hello world"
 }
 
-makeDownOnFailure("master") {
+makeDownOnFailure("primary") {
     echo "hello world"
 }
 ```
@@ -748,7 +748,7 @@ docker pull quay.io/checkmateadmin/my-remote-image:latest
 
 ## Parameters
 
-* dockerContext: _(String|optional)_ - master|slave
+* dockerContext: _(String|optional)_ - primary|slave
 * imageNameFrom: _(String)_ - e.g. my-local-image:latest
 * imageNameTo: _(String)_ - e.g. my-remote-image:latest
 * config: _(Map)_
@@ -769,19 +769,19 @@ pushDockerImage(
     "my-remote-image:latest",
     [
         branches_to_images: [
-            master: "staging",
+            primary: "staging",
             prod: "prod"
         ]
     ]
 )
 
 pushDockerImage(
-    "master",
+    "primary",
     "my-local-image:latest",
     "my-remote-image:latest",
     [
         branches_to_images: [
-            master: "staging",
+            primary: "staging",
             prod: "prod"
         ]
     ]
@@ -1211,11 +1211,11 @@ uploadToS3("userAgentdb.dat", "westeros/static-asset")
 The above example will push the file **userAgentdb.dat** to the S3 bucket **westeros/static-asset**
 ## useDockerHost
 
-Use either the master docker host or the slave docker host.
+Use either the primary docker host or the slave docker host.
 
 ## Parameters
 
-* contextName _(String)_ master|slave
+* contextName _(String)_ primary|slave
 
 ## Examples
 
@@ -1224,7 +1224,7 @@ useDockerHost {
     docker pull nginx
 }
 
-useDockerHost("master") {
+useDockerHost("primary") {
     docker pull nginx
 }
 ```

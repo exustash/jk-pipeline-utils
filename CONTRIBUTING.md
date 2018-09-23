@@ -5,7 +5,7 @@ Please review these guidelines in order to make effective contributions to this 
 [http://groovy-lang.org/style-guide.html](http://groovy-lang.org/style-guide.html)
 
 **Commit message conventions** used throughout the project based on the angular project conventions. Respect of this convention helps with the change logs associated with each releases of the library.
-[https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits)
+[https://github.com/angular/angular.js/blob/primary/DEVELOPERS.md#commits](https://github.com/angular/angular.js/blob/primary/DEVELOPERS.md#commits)
 
 
 

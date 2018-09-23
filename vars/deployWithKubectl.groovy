@@ -19,7 +19,7 @@ def call(String releaseName, String serviceName, String version, Map configMap) 
         reportBuildStatus('release/pipeline/deploy', 'Start deploying to kubernetes', 'PENDING')
         def guessEnvFromBranchname = config.get('guess_env_from_branchname', true)
         def branchesEnvsMapping = config.get('branches_envs_mapping', [
-            master: "staging",
+            primary: "staging",
             prod: "prod"
         ])
         def availableEnvs = ["prod", "preprod", "staging", "playground"]

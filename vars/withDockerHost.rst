@@ -1,10 +1,10 @@
 ## useDockerHost
 
-Use either the master docker host or the slave docker host.
+Use either the primary docker host or the slave docker host.
 
 ### Parameters
 
-* contextName _(String)_ master|slave
+* contextName _(String)_ primary|slave
 
 ### Examples
 
@@ -13,7 +13,7 @@ useDockerHost {
     docker pull nginx
 }
 
-useDockerHost("master") {
+useDockerHost("primary") {
     docker pull nginx
 }
 ```

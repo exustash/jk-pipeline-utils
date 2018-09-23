@@ -166,7 +166,7 @@ String getDeployEnv() {
         break
         case 'preprod':
             environment = "pre-production"
-        case 'master':
+        case 'primary':
             environment = "stage"
         break
         case 'stage':
