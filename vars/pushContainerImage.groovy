@@ -9,7 +9,7 @@ import com.checkmate.alfred.AlfredConfig
  * @param  targetImage
  * @param  config Branch to Image mapping
  */
-Void call(String imageTag, String containerHost='slave') {
+Void call(String imageTag, String containerHost='worker') {
     String owner = getRepositoryOwner()
     List images = getContainerImages()
     List imagesMigratedToQuay = getImagesMigratedToQuay()

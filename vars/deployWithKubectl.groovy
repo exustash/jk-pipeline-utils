@@ -60,7 +60,7 @@ def call(String releaseName, String serviceName, String version, Map configMap) 
             input "Ready to go?"
         }
 
-        useDockerHost("slave") {
+        useDockerHost("worker") {
             useDockerRegistry {
                 deployImageName = 'checkmate/scale-deployment:latest'
                 docker.image("${deployImageName}").pull()

@@ -3,7 +3,7 @@
 /**
  * Build container image on designated container host
  * @param  imageTag
- * @param  containerHost='slave'
+ * @param  containerHost='worker'
  */
 Void call(String namespace, String imageName, String imageTag) {
 

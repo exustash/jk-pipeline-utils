@@ -192,7 +192,7 @@ gazrComplexity()
 
 ## Parameters
 
-* dockerContext - primary|slave _(optional)_
+* dockerContext - primary|worker _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -228,7 +228,7 @@ gazrFormat()
 
 ## Parameters
 
-* dockerContext - primary|slave _(optional)_
+* dockerContext - primary|worker _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -264,7 +264,7 @@ gazrStyle()
 
 ## Parameters
 
-* dockerContext - primary|slave _(optional)_
+* dockerContext - primary|worker _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -300,7 +300,7 @@ gazrTestFunctional()
 
 ## Parameters
 
-* dockerContext - primary|slave _(optional)_
+* dockerContext - primary|worker _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -336,7 +336,7 @@ gazrTestIntegration()
 
 ## Parameters
 
-* dockerContext - primary|slave _(optional)_
+* dockerContext - primary|worker _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -372,7 +372,7 @@ gazrTest()
 
 ## Parameters
 
-* dockerContext - primary|slave _(optional)_
+* dockerContext - primary|worker _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -408,7 +408,7 @@ gazrTestUnit()
 
 ## Parameters
 
-* dockerContext - primary|slave _(optional)_
+* dockerContext - primary|worker _(optional)_
 * body _(optional)_
 
 ## Examples
@@ -612,14 +612,14 @@ Launch the "make down" makefile recipe.
 
 ## Parameters
 
-* dockerContext - primary|slave _(optional)_
+* dockerContext - primary|worker _(optional)_
 # makeDownOnFailure
 
 Put a try/catch around a script and execute the "make down" makefile recipe if an error is thrown.
 
 ## Parameters
 
-* dockerContext - primary|slave _(optional)_
+* dockerContext - primary|worker _(optional)_
 
 ## Examples
 
@@ -748,7 +748,7 @@ docker pull quay.io/checkmateadmin/my-remote-image:latest
 
 ## Parameters
 
-* dockerContext: _(String|optional)_ - primary|slave
+* dockerContext: _(String|optional)_ - primary|worker
 * imageNameFrom: _(String)_ - e.g. my-local-image:latest
 * imageNameTo: _(String)_ - e.g. my-remote-image:latest
 * config: _(Map)_
@@ -1029,7 +1029,7 @@ This function accomplishes the following:
 *   sets up github.com as a known host in $HOME/.ssh/knownhosts
 *   create an empty configfile in $HOME/.ssh/config necessary for fabric
 
-where $HOME is the the home dir of the user with which Jenkins connect to the slave (container)
+where $HOME is the the home dir of the user with which Jenkins connect to the worker (container)
 
 ### Parameters
   None.
@@ -1121,7 +1121,7 @@ This function accomplishes the following:
 *   sets up github.com as a known host in $HOME/.ssh/knownhosts
 *   create an empty configfile in $HOME/.ssh/config necessary for fabric
 
-where $HOME is the the home dir of the user with which Jenkins connect to the slave (container)
+where $HOME is the the home dir of the user with which Jenkins connect to the worker (container)
 
 ### Parameters
   None.
@@ -1211,11 +1211,11 @@ uploadToS3("userAgentdb.dat", "westeros/static-asset")
 The above example will push the file **userAgentdb.dat** to the S3 bucket **westeros/static-asset**
 ## useDockerHost
 
-Use either the primary docker host or the slave docker host.
+Use either the primary docker host or the worker docker host.
 
 ## Parameters
 
-* contextName _(String)_ primary|slave
+* contextName _(String)_ primary|worker
 
 ## Examples
 

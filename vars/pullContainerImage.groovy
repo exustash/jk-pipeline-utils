@@ -2,7 +2,7 @@
 
 import com.checkmate.alfred.AlfredConfig
 
-Void call(String imageName, String containerHost='slave') {
+Void call(String imageName, String containerHost='worker') {
     String owner = getRepositoryOwner()
     String streamedImageName = streamImageName(imageName)
     String taggedImageName = tagImageName(imageName)

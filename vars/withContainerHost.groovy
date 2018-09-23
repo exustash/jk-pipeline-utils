@@ -13,7 +13,7 @@ Void call(String contextName, Closure body) {
         orchestrator: "tcp://orchestrator.checkmate.io:4243"
     ]
 
-    if (contextName != "slave" && contextName != "orchestrator") {
+    if (contextName != "worker" && contextName != "orchestrator") {
         throw new GroovyRuntimeException("${contextName} not supported, choose either 'orchestrator' or 'executor'")
     }
 

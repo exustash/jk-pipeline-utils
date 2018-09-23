@@ -11,7 +11,7 @@ This function accomplishes the following:
 *   sets up github.com as a known host in $HOME/.ssh/knownhosts
 *   create an empty configfile in $HOME/.ssh/config necessary for fabric
 
-where $HOME is the the home dir of the user with which Jenkins connect to the slave (container)
+where $HOME is the the home dir of the user with which Jenkins connect to the worker (container)
 
 ### Parameters
   None.

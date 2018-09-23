@@ -5,7 +5,7 @@
  * @param imageName
  * @param imageTag
  */
-Void call(String imageName, String imageTag, String containerHost='slave') {
+Void call(String imageName, String imageTag, String containerHost='worker') {
     repository = 'quay.io/checkmateadmin'
     useDockerHost(containerHost) {
         try {
