@@ -4,11 +4,11 @@
 * Set ssh key for git and remote server operation
 */
 
-Void call() {
+Void call(String secretId) {
     try {
         if (isCredentailsSet() == false) {
             withCredentials([sshUserPrivateKey(
-            credentialsId: 'jenkins-credetials-id',
+            credentialsId: "${secretId}",
             keyFileVariable: 'RELEASE_KEY',
             usernameVariable: 'RELEASE_KEY_USR',
             )]) {
