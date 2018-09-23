@@ -1,6 +1,6 @@
 ## useDockerRegistry
 
-Use the docker **default** hub registry.
+Use the docker container registry.
 
 ### Examples
 
