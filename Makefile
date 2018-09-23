@@ -4,10 +4,10 @@
 # It defines a target for each task executed during the release pipeline
 #
 
-BUILD_IMAGE=mikanolab/release-gradle:latest
+BUILD_IMAGE=mikanolab/guardians-gradle:latest
 
 #This wraps the execution of yarn task into docker for local emulation of ci context
-exec = docker run --rm -it -v ${PWD}:/pipelines/workspace $(BUILD_IMAGE)
+exec = docker run --rm -it -v ${PWD}:/workspaces $(BUILD_IMAGE)
 
 ifeq ($(CI),true)
 	exec =
