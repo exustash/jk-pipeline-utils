@@ -1,6 +1,6 @@
-## useDockerHost
+## withContainerHost
 
-Use either the primary docker host or the worker docker host.
+Use either the primary host or the worker host.
 
 ### Parameters
 
