@@ -4,7 +4,6 @@
  * [call description]
  * @param  hostName [description]
  * @param  body        [description]
- * @return             [description]
  */
 Void call(String hostName, Closure body) {
     //change tcp adresses to the one of your liking

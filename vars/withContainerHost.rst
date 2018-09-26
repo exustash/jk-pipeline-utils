@@ -1,19 +1,16 @@
-## useDockerHost
+## withContainerHost
 
-Use either the primary docker host or the worker docker host.
+Use either the primary or a worker container host.
 
 ### Parameters
 
-* hostName _(String)_ primary|worker
+* hostName primary|worker
 
 ### Examples
 
 ```groovy
-useDockerHost {
-    docker pull nginx
-}
-
-useDockerHost("primary") {
+withDockerHost('worker') {
     docker pull nginx
 }
 ```
+
