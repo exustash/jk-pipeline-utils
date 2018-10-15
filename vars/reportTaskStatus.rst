@@ -1,9 +1,9 @@
-## reportBuildStatus
+## reportPipelineStatus
 Reports the build statrus to the given refs on github
 
 ### Description  
 ```groovy
-reportBuildStatus(String context, String message, String state)
+reportPipelineStatus(String context, String message, String state)
 ```
 
 ### Parameters
@@ -15,7 +15,7 @@ reportBuildStatus(String context, String message, String state)
 
 ### Examples
 ```groovy
-reportBuildStatus()
+reportPipelineStatus()
 ```
 
 The above

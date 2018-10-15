@@ -4,10 +4,10 @@
  * For a given release name, service name and version. We deploy the
  * related application on our Kubernetes clusters.
  *
- * Default behavior -> stepsScaleDeployment() used .alfred/pipeline.yaml
+ * Default behavior -> stepsScaleDeployment() used .pennyworth/pipeline.yaml
  * to setup default parameters.
  *
- * @param releaseName Release name e.g. westeros
+ * @param releaseName Release name e.g. nandaparbat
  * @param serviceName Service name e.g. gbased
  * @param version e.g. 12ef34
  * @param config Configuration mapping to enable/disable some features
@@ -16,7 +16,7 @@ def call(String releaseName, String serviceName, String version, Map configMap) 
     config = configMap ?: [:]
 
     try {
-        reportBuildStatus('release/pipeline/deploy', 'Start deploying to kubernetes', 'PENDING')
+        reportPipelineStatus('release/pipeline/deploy', 'Start deploying to kubernetes', 'PENDING')
         def guessEnvFromBranchname = config.get('guess_env_from_branchname', true)
         def branchesEnvsMapping = config.get('branches_envs_mapping', [
             primary: "staging",
@@ -60,7 +60,7 @@ def call(String releaseName, String serviceName, String version, Map configMap) 
             input "Ready to go?"
         }
 
-        useDockerHost("worker") {
+        withDockerHost("worker") {
             useDockerRegistry {
                 deployImageName = 'checkmate/scale-deployment:latest'
                 docker.image("${deployImageName}").pull()
@@ -97,9 +97,9 @@ def call(String releaseName, String serviceName, String version, Map configMap) 
 
             }
         }
-        reportBuildStatus('release/kubernetes/deploy', 'Deployed to kubernetes', 'SUCCESS')
+        reportPipelineStatus('release/kubernetes/deploy', 'Deployed to kubernetes', 'SUCCESS')
     } catch (err) {
-        reportBuildStatus('release/kubernetes/deploy', 'Fail to deploy on kubernetes', 'FAILURE')
+        reportPipelineStatus('release/kubernetes/deploy', 'Fail to deploy on kubernetes', 'FAILURE')
         throw err
     }
 }
@@ -109,8 +109,8 @@ def call(String releaseName, String serviceName, String version) {
 }
 
 def call(Map configmap) {
-    def alfred = getAlfredConfig()
-    def pipeline = alfred.pipeline()
+    def pennyworth = getpennyworthConfig()
+    def pipeline = pennyworth.pipeline()
 
     config = configMap ?: [:]
 

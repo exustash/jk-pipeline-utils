@@ -9,15 +9,15 @@
  */
 
 Void call(String repositoryName, String packageName, String releaseTag, String commitMsg, String artifactType='tar.gz') {
-    reportBuildStatus("delivery/pipeline/release.push", "Pipeline Task release.push is runing", 'PENDING')
+    reportPipelineStatus("delivery/pipeline/release.push", "Pipeline Task release.push is runing", 'PENDING')
     try {
         cleanupGHRelease(repositoryName, releaseTag)
         createGHRelease(repositoryName, releaseTag, commitMsg)
         uploadGHRelease(repositoryName, packageName, releaseTag, artifactType)
-        reportBuildStatus("release/pipeline/release.push", "Pipeline Task release.push  has succeeded", 'SUCCESS')
+        reportPipelineStatus("release/pipeline/release.push", "Pipeline Task release.push  has succeeded", 'SUCCESS')
 
     } catch (err) {
-      reportBuildStatus("release/pipeline/release.push", "Pipeline Task release.push  has failed", 'FAILURE')
+      reportPipelineStatus("release/pipeline/release.push", "Pipeline Task release.push  has failed", 'FAILURE')
       error("[ERR!] Pipeline execution error: ${err.message}")
     }
 }

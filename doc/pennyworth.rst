@@ -426,35 +426,35 @@ gazrTestUnit("primary") {
     junit "reports/report_unit_tests.xml"
 }
 ```
-# getAlfredConfig
+# getpennyworthConfig
 
-Retrieve an "AlfredDockerConfig" & "AlfredPipeline" instances object.
+Retrieve an "pennyworthDockerConfig" & "pennyworthPipeline" instances object.
 
 ## Description
 
-The AlfredConfig is just a small container which contains an "AlfredDockerConfig" object and an "AlfredPipelineConfig" object.
+The pennyworthConfig is just a small container which contains an "pennyworthDockerConfig" object and an "pennyworthPipelineConfig" object.
 
 ```groovy
-getAlfredConfig()
+getpennyworthConfig()
 ```
 
 ## Examples
 
 ```groovy
-def config = getAlfredConfig()
+def config = getpennyworthConfig()
 ```
 
 ## Get pipeline object
 
 ```groovy
-def config = getAlfredConfig()
+def config = getpennyworthConfig()
 def pipeline = config.pipeline()
 ```
 
 ## Get docker object
 
 ```groovy
-def config = getAlfredConfig()
+def config = getpennyworthConfig()
 def docker = config.docker()
 ```
 ## getComposeService
@@ -697,12 +697,12 @@ We push our docker images to:
 * Docker Hub
 * Quay.io
 
-That function required the ".alfred/docker.yaml" file.
+That function required the ".pennyworth/docker.yaml" file.
 We use that file to give permissions to the listed tribes.
 
 ```yaml
 images:
-  - westeros-spaces
+  - nandaparbat-spaces
 repositories:
   quayio:
     owners:
@@ -824,18 +824,18 @@ Check if a specific version is already deployed on the Pypi Index.
 
 ## Parameters
 
-* packageName _(String)_ - e.g. westeros-common
+* packageName _(String)_ - e.g. nandaparbat-common
 * version _(String)_ - e.g. 0.0.1
 * indexName _(String|optional)_ - e.g. prod|sandbox
 
 ## Examples
 
 ```groovy
-// Check if the "westeros-common" with 0.0.1 already exist on prod index.
-pypiCheckVersion("westeros-common", "0.0.1")
+// Check if the "nandaparbat-common" with 0.0.1 already exist on prod index.
+pypiCheckVersion("nandaparbat-common", "0.0.1")
 
-// Check if the "westeros-common" with 0.0.1 already exist on sandbox index.
-pypiCheckVersion("westeros-common", "0.0.1", "sandbox")
+// Check if the "nandaparbat-common" with 0.0.1 already exist on sandbox index.
+pypiCheckVersion("nandaparbat-common", "0.0.1", "sandbox")
 ```
 # pypiConfig
 
@@ -853,17 +853,17 @@ Use Makefile "make publish" recipe.
 
 ## Parameters
 
-* packageName _(String)_ - e.g. westeros-common
+* packageName _(String)_ - e.g. nandaparbat-common
 * indexName _(String|optional)_ - e.g. prod|sandbox
 
 ## Examples
 
 ```groovy
-// Publish westeros-common to the regular index (prod)
-pypiPublish("westeros-common")
+// Publish nandaparbat-common to the regular index (prod)
+pypiPublish("nandaparbat-common")
 
-// Publish westeros-common to the sandbox index
-pypiPublish("westeros-common", "sandbox")
+// Publish nandaparbat-common to the sandbox index
+pypiPublish("nandaparbat-common", "sandbox")
 ```
 ## removeDockerImage
 Implements a step to Build docker image on a given docker host
@@ -888,12 +888,12 @@ removeDockerImage('fixtures-agent', "latest")
 ```
 
 The above example remove the image **checkmate/fixtures-agent** with tag latest based using **fixtures/Dockerfile**
-## reportBuildStatus
+## reportPipelineStatus
 Reports the build statrus to the given refs on github
 
 ### Description  
 ```groovy
-reportBuildStatus(String context, String message, String state)
+reportPipelineStatus(String context, String message, String state)
 ```
 
 ### Parameters
@@ -905,7 +905,7 @@ reportBuildStatus(String context, String message, String state)
 
 ### Examples
 ```groovy
-reportBuildStatus()
+reportPipelineStatus()
 ```
 
 The above
@@ -1148,21 +1148,21 @@ Deploy a service on Kubernetes Cluster, previously configured in Dragonstone.
 Deploy a service on our Kubernetes Clusters.
 The service have to be configured in Dragonstone.
 
-For a specific use-case, the ".alfred/pipeline.yaml" file is required.
+For a specific use-case, the ".pennyworth/pipeline.yaml" file is required.
 
 ```yaml
-release_name: westeros
+release_name: nandaparbat
 service_name: spaces
-channel_slack: "#westeros"
+channel_slack: "#nandaparbat"
 ```
 
 ```groovy
-stepsScaleDeployment("westeros", "gbased", "d7b879d")
+stepsScaleDeployment("nandaparbat", "gbased", "d7b879d")
 ```
 
 ## Parameters
 
-* releaseName _(String)_ - e.g. westeros
+* releaseName _(String)_ - e.g. nandaparbat
 * serviceName _(String)_ - e.g. gbased
 * version _(String)_ - e.g. d7b879d
 * config _(Map)_
@@ -1183,9 +1183,9 @@ stepsScaleDeployment([
     slack_channel: "#lol"
 ])
 
-stepsScaleDeployment("westeros", "gbased", "d7b879d")
+stepsScaleDeployment("nandaparbat", "gbased", "d7b879d")
 
-stepsScaleDeployment("westeros", "gbased", "d7b879d", [
+stepsScaleDeployment("nandaparbat", "gbased", "d7b879d", [
     slack_channel: "#lol"
 ])
 ```
@@ -1206,10 +1206,10 @@ uploadToS3(String filePath, String bucketName)
 
 ### Examples
 ```groovy
-uploadToS3("userAgentdb.dat", "westeros/static-asset")
+uploadToS3("userAgentdb.dat", "nandaparbat/static-asset")
 ```
-The above example will push the file **userAgentdb.dat** to the S3 bucket **westeros/static-asset**
-## useDockerHost
+The above example will push the file **userAgentdb.dat** to the S3 bucket **nandaparbat/static-asset**
+## withDockerHost
 
 Use either the primary docker host or the worker docker host.
 
@@ -1220,11 +1220,11 @@ Use either the primary docker host or the worker docker host.
 ## Examples
 
 ```groovy
-useDockerHost {
+withDockerHost {
     docker pull nginx
 }
 
-useDockerHost("primary") {
+withDockerHost("primary") {
     docker pull nginx
 }
 ```

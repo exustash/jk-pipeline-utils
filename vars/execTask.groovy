@@ -16,13 +16,13 @@ Void call(String taskRunner, String taskCmd, Boolean report=false) {
 }
 
 Void runTaskWithReport(String task, String taskCmd) {
-    reportBuildStatus("release/pipeline/${taskCmd}", "Pipeline Task ${taskCmd} is runing", 'PENDING')
+    reportPipelineStatus("release/pipeline/${taskCmd}", "Pipeline Task ${taskCmd} is runing", 'PENDING')
     println "--> Pipeline Task ${task} is runing"
     try {
         sh returnStdout: false, script: "${task}"
-        reportBuildStatus("release/pipeline/${taskCmd}", "Pipeline Task ${taskCmd}  has succeeded", 'SUCCESS')
+        reportPipelineStatus("release/pipeline/${taskCmd}", "Pipeline Task ${taskCmd}  has succeeded", 'SUCCESS')
     } catch (err) {
-        reportBuildStatus("release/pipeline/${taskCmd}", "Pipeline Task ${taskCmd}  has failed", 'FAILURE')
+        reportPipelineStatus("release/pipeline/${taskCmd}", "Pipeline Task ${taskCmd}  has failed", 'FAILURE')
         error("[ERR!] Pipeline Task ${task} execution error: ${err.message}")
     }
 }

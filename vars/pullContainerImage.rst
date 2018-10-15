@@ -1,13 +1,13 @@
 #!/usr/bin/env groovy
 
-import com.checkmate.alfred.AlfredConfig
+import com.checkmate.pennyworth.pennyworthConfig
 
 Void call(String imageName, String containerHost='worker') {
     String owner = getRepositoryOwner()
     String streamedImageName = streamImageName(imageName)
     String taggedImageName = tagImageName(imageName)
 
-    useDockerHost(containerHost) {
+    withDockerHost(containerHost) {
         Boolean isRepoOnQuay = isRepoOnQuay(streamedImageName)
 
         if (isRepoOnQuay) {
@@ -121,8 +121,8 @@ private String streamImageName(String imageName) {
 }
 
 String getRepositoryOwner() {
-    AlfredConfig alfredConfig = getAlfredConfig()
-    String owner = alfredConfig.docker().getQuayioOwner()
+    pennyworthConfig pennyworthConfig = getpennyworthConfig()
+    String owner = pennyworthConfig.docker().getQuayioOwner()
 
     return owner
 }

@@ -15,6 +15,6 @@ uploadToS3(String filePath, String bucketName)
 
 ### Examples
 ```groovy
-uploadToS3("userAgentdb.dat", "westeros/static-asset")
+uploadToS3("userAgentdb.dat", "nandaparbat/static-asset")
 ```
-The above example will push the file **userAgentdb.dat** to the S3 bucket **westeros/static-asset**
+The above example will push the file **userAgentdb.dat** to the S3 bucket **nandaparbat/static-asset**
