@@ -20,7 +20,7 @@ help:
 	@grep -E '[a-zA-Z\.\-]+:.*?@ .*$$' $(MAKEFILE_LIST)| sort | tr -d '#'  | awk 'BEGIN {FS = ":.*?@ "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 #install-deps: ##@ compile and/or install dependencies
-install-dep:
+build-code:
 	$(exec) gradle assemble
 
 #lint-code: ##@ static analysis for code style violations
