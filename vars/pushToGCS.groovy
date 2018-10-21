@@ -8,7 +8,7 @@
 Void call(String filePath, String bucketName) {
     try {
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
-          credentialsId: 's3-uploader',
+          credentialsId: 'aws_s3_id',
           accessKeyVariable: 'AWS_ACCESS_KEY_ID',
           secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
           ]]) {

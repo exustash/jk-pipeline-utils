@@ -63,7 +63,7 @@ cleanupDockerContainers()
 cleanupDockerContainers()
 ```
 The above example will remove all containers  on a defined dockerhost
-## cleanupDockerImages  
+## cleanupDockerImages
 Deletes a defined list of docker images from a given docker host
 
 ### Description
@@ -79,10 +79,10 @@ Deletes a defined list of docker images from a given docker host
 cleanupDockerImages()
 ```
 The above example will remove all images  on a defined dockerhost
-## cleanupDockerVolumes  
+## cleanupDockerVolumes
 Deletes a defined list of docker images from a given docker host
 
-### Description  
+### Description
 ```
 cleanupDockerVolumes()
 ```
@@ -113,7 +113,7 @@ codexSonarQube()
 ## deployService
 Deploys a service a defined by an ansible cook playbook
 
-### Description  
+### Description
 ```
 deployService(String deployEnv, String serviceName, String playbookPath)
 ```
@@ -135,7 +135,7 @@ The above example deploy the **essos** to staging env as defined by **essos-play
 ## deployWithAnsible
 Deploys a given application through an ansible playbook to a specified environment
 
-### Description  
+### Description
 ```groovy
 deployWithAnsible(String deploy_env, String serviceName)
 ```
@@ -156,7 +156,7 @@ The above example deploy the application **uapp** to the environment **staging**
 ## downloadFromFiler
 Download a static asset file from a filer
 
-### Description  
+### Description
 ```groovy
 downloadFromFiler(String localPath, String remotePath)
 ```
@@ -499,7 +499,7 @@ def packageVersion = getPackageVersion()
 ## getGitCommitHash
 Implements a step that retrieves the short hash of the current commit
 
-### Description  
+### Description
 ```
 getGitCommitHash()
 ```
@@ -517,7 +517,7 @@ getGitCommitHash()
 ## getGitCommitLongHash
 Retrieves the long hash of the current commit
 
-### Description  
+### Description
 ```groovy
 getGitCommitLongHash()
 ```
@@ -538,7 +538,7 @@ The above
 ## getGitRepositoryURL
 Retrieves the current repository URL
 
-### Description  
+### Description
 ```
 getGitRepositoryURL()
 ```
@@ -559,7 +559,7 @@ The above example will return the url of the current repository url
 ## getGitCommitMsg
 Retrieves the short hash of the current commit
 
-### Description  
+### Description
 ```groovy
 getGitCommitMsg()
 ```
@@ -677,7 +677,7 @@ That function it's an abstract of the docker repositories we are using at checkm
 
 
 ## Parameters
- 
+
 ## Examples
 
 ```groovy
@@ -790,7 +790,7 @@ pushDockerImage(
 ## releaseToGithub
 Pushes a given release tag to Github Releases
 
-### Description  
+### Description
 ```groovy
 releaseToGithub(releaseTag, commitMsg, repositoryName)
 ```
@@ -891,7 +891,7 @@ The above example remove the image **checkmate/fixtures-agent** with tag latest 
 ## reportPipelineStatus
 Reports the build statrus to the given refs on github
 
-### Description  
+### Description
 ```groovy
 reportPipelineStatus(String context, String message, String state)
 ```
@@ -912,7 +912,7 @@ The above
 ## runDeployTask
 Implements a step that runs a given saas task withstatus report to PR/commit and error handling
 
-### Description  
+### Description
 ```groovy
 runDeployTask(String taskCmd, String taskExecutor, String ref, String deployEnv = 'staging')
 ```
@@ -933,7 +933,7 @@ The above example will execute the task **deploy** to the environment **preprod*
 ## runReleaseTask
 Runs a given pipeline task with error handling
 
-### Description  
+### Description
 ```groovy
 execPipelineTask(String taskRunner, String taskCmd)
 ```
@@ -956,7 +956,7 @@ The above example will execute **unit tests** using **Make binary** and report b
 ## sendJobStatusToSlack
 Implements a step that send a given Status to a defined slack channel
 
-### Description  
+### Description
 ```groovy
 sendJobStatusToSlack(String buildStatus)
 ```
@@ -980,7 +980,7 @@ The above example will Statusy in the slack channel **release-platform** that th
 ## sendPipelineNotifToSlack
 Implements a step that send a given notifications to a defined slack channel
 
-### Description  
+### Description
 ```groovy
 sendPipelineStatusToSlack(String buildStatus)
 ```
@@ -1019,7 +1019,7 @@ setPackageVersion("0.0.1")
 ## setReleaseSSHkey
 Sets an ssh key in the build agent by retrieving it from jenkins credentials manager
 
-### Description  
+### Description
 ```groovy
 setReleaseSSHkey()
 ```
@@ -1050,7 +1050,7 @@ The above example will create do the following
 ## createReleaseTag
 Creates a release tag
 
-### Description  
+### Description
 ```
 getReleaseTag(String version, String deployEnv)
 ```
@@ -1071,7 +1071,7 @@ The above example create release tag **staging.2.eb234ab**
 ## getReleaseVersion
 Sets an ssh key in the build agent by retrieving it from jenkins credentials manager
 
-### Description  
+### Description
 ```groovy
 getReleaseVersion()
 ```
@@ -1090,10 +1090,10 @@ getReleaseVersion()
 ```
 
 The above example will create do the following
-## getShortBuildName  
+## getShortBuildName
 Implements a step that create a tag based on the name and number of jenkins build
 
-### Description  
+### Description
 ```groovy
 getShortBuildName (Int numberOfDirectories = 2)
 ```
@@ -1111,7 +1111,7 @@ getShortBuildName(int numberOfDirectories = 2)
 ## setSSHCredentials
 Sets an ssh key in the build agent by retrieving it from jenkins credentials manager
 
-### Description  
+### Description
 ```groovy
 setSSHCredentials()
 ```
@@ -1192,7 +1192,7 @@ stepsScaleDeployment("nandaparbat", "gbased", "d7b879d", [
 ## uploadToS3
 Upload a given static asset Upload to an aws S3 bucket
 
-### Description  
+### Description
 ```groovy
 uploadToS3(String filePath, String bucketName)
 ```

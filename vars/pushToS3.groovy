@@ -15,6 +15,6 @@ Void call(String filePath, String bucketName) {
             sh returnStdout: false, script: """aws s3 cp \"/tmp/${env.LOCAL_PATH}/${filePath}\" s3://\"${bucketName}\"/${filePath}"""
         }
     } catch (err) {
-        error("[ERR!] Pipeline execution error: ${err.message}")
+        error("[Err!] Pipeline execution error: ${err.message}")
     }
 }

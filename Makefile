@@ -21,7 +21,7 @@ help:
 
 #install-deps: ##@ compile and/or install dependencies
 build-code:
-	$(exec) gradle assemble
+	$(exec) gradle  build -x test
 
 #lint-code: ##@ static analysis for code style violations
 lint-code:

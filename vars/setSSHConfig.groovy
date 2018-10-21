@@ -8,7 +8,7 @@ Void call(String secretId) {
     try {
         if (isCredentailsSet() == false) {
             withCredentials([sshUserPrivateKey(
-            credentialsId: "${secretId}",
+            credentialsId: "${ssh_key_id}",
             keyFileVariable: 'RELEASE_KEY',
             usernameVariable: 'RELEASE_KEY_USR',
             )]) {
@@ -25,8 +25,7 @@ Void call(String secretId) {
     }
 }
 
-Boolean isCredentailsSet() {
+Boolean isSSHkeySet() {
     Boolean jenkinsSSHExists = fileExists '/home/jenkins/.ssh/id_rsa'
-    Boolean rootSSHExists = fileExists '/home/root/.ssh/id_rsa'
-    return ((jenkinsSSHExists == true) || (rootSSHExists == true)) ? true : false
+    return (jenkinsSSHExists == true) ? true : false
 }
