@@ -18,7 +18,7 @@ buildDockerImage(String imageName, String imageTag, String dockerFilePath='.')
 ### Examples
 
 ```groovy
-buildDockerImage('acme-app', "20180425-155123.eh123nb", 'acme-docker/.' )
+buildDockerImage('acme-app', "eh123nb", 'acme-docker/.' )
 ```
 
-The above example build the image checkmate/acme-app with tag 20180425-155123.eh123nb using a dockerfile  located acme-docker/.
+The above example build the image checkmate/acme-app with tag eh123nb using a dockerfile  located acme-docker/.
