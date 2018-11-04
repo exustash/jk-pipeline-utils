@@ -888,12 +888,12 @@ removeDockerImage('fixtures-agent', "latest")
 ```
 
 The above example remove the image **checkmate/fixtures-agent** with tag latest based using **fixtures/Dockerfile**
-## reportPipelineStatus
+## reportTaskStatus
 Reports the build statrus to the given refs on github
 
 ### Description
 ```groovy
-reportPipelineStatus(String context, String message, String state)
+reportTaskStatus(String context, String message, String state)
 ```
 
 ### Parameters
@@ -905,7 +905,7 @@ reportPipelineStatus(String context, String message, String state)
 
 ### Examples
 ```groovy
-reportPipelineStatus()
+reportTaskStatus()
 ```
 
 The above

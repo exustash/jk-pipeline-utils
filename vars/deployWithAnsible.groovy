@@ -6,14 +6,14 @@
  * @param serviceName:  the name of the service that will deployed to specified env
  */
 Void call(String deployEnv, String serviceName, String playbookPath) {
-    reportPipelineStatus("release/pipeline/service.deploy", "Pipeline Task service.deploy is runing", 'PENDING')
+    reportTaskStatus("delivery/task/service.deploy", "Pipeline Task service.deploy is runing", 'PENDING')
     try {
         println "---> Deploying ${serviceName} to ${deployEnv} #### "
         sh returnStdout: false, script: "ansible-playbook deployment.yml -e deploy_env=${env} -e service_name=${serviceName}"
-        reportPipelineStatus("release/pipeline/service.deploy", "Pipeline Task service.build has succeeded", 'SUCCESS')
+        reportTaskStatus("delivery/task/service.deploy", "Pipeline Task service.build has succeeded", 'SUCCESS')
 
     } catch (err) {
-       reportPipelineStatus("release/pipeline/service.deploy", "Pipeline Task service.deploy has failed", 'FAILURE')
+       reportTaskStatus("delivery/task/service.deploy", "Pipeline Task service.deploy has failed", 'FAILURE')
        error("[ERR!] Pipeline execution error: ${err.message}")
     }
 }

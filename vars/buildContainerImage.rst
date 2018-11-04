@@ -1,10 +1,10 @@
 ## buildDockerImage
-Builds a docker image on a given docker host
+Builds a docker image given a specific name, tagg an dockerfile path.
 
 ### Description
 
 ```
-buildAgentImage(String imageName, String imageTag='latest', String dockerFilePath='.')
+buildDockerImage(String imageName, String imageTag, String dockerFilePath='.')
 ```
 
 ### Parameters

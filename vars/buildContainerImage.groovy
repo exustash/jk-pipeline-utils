@@ -1,23 +1,27 @@
 #!/usr/bin/env groovy
 
 /**
- * Build container image on designated container host
+ * Build container image
+ * @param  imageName
  * @param  imageTag
- * @param  containerHost='worker'
+ * @param  dockerFilePath
  */
-Void call(String repository, String taggedImageName, String dockerHost) {
+Void call(String imageName, String imageTag,  dockerFilePath='.') {
 
-    reportPipelineStatus("release/pipeline/container-image.build", "Task container-image.build is runing", 'PENDING')
+    hostName = 'nameOfTheContainerHost_AsDefinedined_inJekinsInstance'
+    repository = 'therepository_underwhich_store_your_docker_images'
+
+    reportTaskStatus("pipeline/task/image.build", "Task image.build is runing", 'PENDING')
     try {
-            withDockerHost("${containerHost}") {
-                    println "---> Building version ${imageTag} of containr image ${repository}/${image.name}"
-                    sh "docker build -t ${repository}/${image.name} ${image.path}"
+            withDockerHost("hostName") {
+                    println "---> Building version ${imageTag} of container image ${repository}/${taggedImageName}"
+                    sh "docker build -t ${repository}/${imageName}:${imageTag} ${dockerFilePath}"
                 }
             }
-        reportPipelineStatus("release/pipeline/container-image.build", "Task container-image.build is runing", 'SUCCESS')
+        reportTaskStatus("pipeline/task/image.build", "Task image.build is runing", 'SUCCESS')
     } catch (err) {
-        reportPipelineStatus("release/pipeline/container-image.build", "Task container-image.build is runing", 'FAILURE')
-        error("[ERR!] Pipeline step BuildContainerImage execution error: ${err.message}")
+        reportTaskStatus("pipeline/task/image.build", "Task image.build is runing", 'FAILURE')
+        error("[Error!] Pipeline step BuildContainerImage execution error: ${err.message}")
     }
 }
 

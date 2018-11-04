@@ -8,11 +8,11 @@
 Void call(String hostName, Closure body) {
     //change tcp adresses to the one of your liking
     Map containerHosts = [
-        worker: "tcp://worker.container.host.io:4243",
-        primary: "tcp://primary.container.host.io:4243"
+        worker_one: "tcp://worker_one.container.host.io:4243",
+        primary_two: "tcp://worker_two.container.host.io:4243"
     ]
 
-    if (hostName != "worker" && hostName != "primaryd") {
+    if (hostName != "worker_one" && hostName != "worker_two") {
         throw new GroovyRuntimeException("${hostName} not supported, choose either primary or worker")
     }
 
@@ -21,13 +21,4 @@ Void call(String hostName, Closure body) {
     docker.withServer(dockerHosts[hostName]) {
         body()
     }
-}
-
-/**
- * [call description]
- * @param  body [description]
- * @return      [description]
- */
-Void call(Closure body) {
-    call("executor", body)
 }

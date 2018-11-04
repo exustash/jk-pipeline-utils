@@ -5,7 +5,7 @@
  * @param versionning scheme
  * @return the version number as a string
  */
-String call(String environment='prod') {
+String call(String versionType='prod') {
     println '---> construct and return a release version'
     switch(versionType) {
         case 'stage':

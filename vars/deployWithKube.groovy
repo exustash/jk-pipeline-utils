@@ -16,7 +16,7 @@ def call(String releaseName, String serviceName, String version, Map configMap) 
     config = configMap ?: [:]
 
     try {
-        reportPipelineStatus('release/pipeline/deploy', 'Start deploying to kubernetes', 'PENDING')
+        reportTaskStatus('delivery/task/deploy', 'Start deploying to kubernetes', 'PENDING')
         def guessEnvFromBranchname = config.get('guess_env_from_branchname', true)
         def branchesEnvsMapping = config.get('branches_envs_mapping', [
             primary: "staging",
@@ -97,9 +97,9 @@ def call(String releaseName, String serviceName, String version, Map configMap) 
 
             }
         }
-        reportPipelineStatus('release/kubernetes/deploy', 'Deployed to kubernetes', 'SUCCESS')
+        reportTaskStatus('release/kubernetes/deploy', 'Deployed to kubernetes', 'SUCCESS')
     } catch (err) {
-        reportPipelineStatus('release/kubernetes/deploy', 'Fail to deploy on kubernetes', 'FAILURE')
+        reportTaskStatus('release/kubernetes/deploy', 'Fail to deploy on kubernetes', 'FAILURE')
         throw err
     }
 }
