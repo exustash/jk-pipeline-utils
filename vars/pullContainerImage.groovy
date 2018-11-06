@@ -1,23 +1,13 @@
 #!/usr/bin/env groovy
 
-import com.checkmate.pennyworth.pennyworthConfig
-
 Void call(String imageName, String containerHost='worker') {
-    String owner = getRepositoryOwner()
     String streamedImageName = streamImageName(imageName)
     String taggedImageName = tagImageName(imageName)
 
     withDockerHost(containerHost) {
-        Boolean isRepoOnQuay = isRepoOnQuay(streamedImageName)
+        println "---> pulling ${taggedImageName} from DockerHub"
+        pullFromDockerHub(taggedImageName)
 
-        if (isRepoOnQuay) {
-            println "---> pulling ${taggedImageName} from Quay"
-            pullFromQuay(taggedImageName, owner)
-
-        } else {
-            println "---> pulling ${taggedImageName} from DockerHub"
-            pullFromDockerHub(taggedImageName)
-        }
     }
 }
 
@@ -30,28 +20,16 @@ Map vaultCredentials(String robotName) {
   List secrets = [
     [
       $class: "VaultSecret",
-      path: "secret/jenkins/quay.io/robots/${robotName}",
+      path: "secret/jenkins/dockerhub",
       secretValues: [
-        [$class: "VaultSecretValue", envVar: "QUAY_USER", vaultKey: "username"],
-        [$class: "VaultSecretValue", envVar: "QUAY_PASSWD", vaultKey: "token"]
+        [$class: "VaultSecretValue", envVar: "HUB_USER", vaultKey: "username"],
+        [$class: "VaultSecretValue", envVar: "HUB_PASSWD", vaultKey: "token"]
       ]
     ]
   ]
   return secrets
 }
 
-/**
- * Push a container image to Quay.io registry
- * @param  sourceImage
- * @param  targetImage
- * @param  robotName
- */
-Void pullFromQuay(String imageName, String robotName) {
-    wrap([$class: "VaultBuildWrapper", vaultSecrets: vaultCredentials(robotName)]) {
-        sh 'docker login -u=\"${QUAY_USER}\" -p=\"${QUAY_PASSWD}\" quay.io'
-        sh "docker pull quay.io/checkmateadmin/${imageName}"
-    }
-}
 
 /**
  * Push a container image to Dockerhub registry
@@ -66,19 +44,6 @@ Void pullFromDockerHub(String imageName) {
   }
 }
 
-private def getQuayApplicationTokenFromVault() {
-  def secret = [
-    [
-      $class: "VaultSecret",
-      path: "secret/jenkins/quay.io/application/teamRights",
-      secretValues: [
-            [$class: "VaultSecretValue", envVar: "QUAY_APPLICATION_TOKEN", vaultKey: "token"]
-      ]
-    ]
-  ]
-  return secret
-}
-
 def getDockerHubCredentialsFromVault() {
   def secrets = [
     [
@@ -91,15 +56,6 @@ def getDockerHubCredentialsFromVault() {
     ]
   ]
   return secrets
-}
-
-private Boolean isRepoOnQuay(String repository) {
-    String result= ""
-    wrap([$class: "VaultBuildWrapper", vaultSecrets: getQuayApplicationTokenFromVault()]) {
-      result = sh (returnStdout: true, script: "/usr/sbin/quaycli -f -n checkmateadmin -t $QUAY_APPLICATION_TOKEN repo check ${repository}")
-    }
-    println "${result}"
-    return result.toBoolean()
 }
 
 private String tagImageName(String imageName) {
@@ -118,11 +74,4 @@ private String streamImageName(String imageName) {
     }
 
     return imageName
-}
-
-String getRepositoryOwner() {
-    pennyworthConfig pennyworthConfig = getpennyworthConfig()
-    String owner = pennyworthConfig.docker().getQuayioOwner()
-
-    return owner
 }
