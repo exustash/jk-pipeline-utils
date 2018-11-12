@@ -1,6 +1,3 @@
 Void call(Closure body) {
 
-   ) {
-
-    }
 }

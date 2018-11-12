@@ -19,9 +19,9 @@ endif
 help:
 	@grep -E '[a-zA-Z\.\-]+:.*?@ .*$$' $(MAKEFILE_LIST)| sort | tr -d '#'  | awk 'BEGIN {FS = ":.*?@ "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-#install-deps: ##@ compile and/or install dependencies
+#build-code: ##@ compile and/or install dependencies
 build-code:
-	$(exec) gradle  build -x test
+	$(exec) gradle  build -x test -x check
 
 #lint-code: ##@ static analysis for code style violations
 lint-code:

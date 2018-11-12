@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-import com.checkmate.summaries.Testing
+import org.mikanolab.reports.Testing
 
 /**
  * Send notifications based on build status string

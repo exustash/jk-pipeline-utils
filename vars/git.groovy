@@ -15,8 +15,6 @@ String getCommitMsg() {
   return sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%s'").trim()
 }
 
-
-
 /**
  * Get the current branch name
  */
@@ -64,34 +62,6 @@ String getAuthorName() {
 /**
 
 /**
- * Get the current branch name
- */
-String getCurrentBranch() {
-  String currentBranch = env.BRANCH_NAME
-  if (!currentBranch) {
-    currentRaw = sh(script: 'git name-rev --name-only HEAD', returnStdout: true).trim()
-    currentBranch = currentRaw.split('remotes/origin/')[1];
-  }
-  return currentBranch
-}
-
-/**
- * retrieve the url of the repositiry associated with current build
- * @return an url string
- */
-String getRepositoryURL() {
-  sh "git config --get remote.origin.url > .git/remote-url"
-  return readFile(".git/remote-url").trim()
-}
-
-/**
-* Retrieve the current pull request number
-*/
-Integer getPullRequestNumber() {
-    env.CHANGE_ID != null && env.CHANGE_ID.length() > 0
-    return env.CHANGE_ID
-}
-
  * Get the long format commit hash of the current commit
  */
 String getCommitDate() {

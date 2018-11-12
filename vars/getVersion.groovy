@@ -8,7 +8,7 @@
 String call(String versionType='hash') {
     println '---> construct and return a release version'
     switch(versionType) {
-        ase 'hash':
+        case 'hash':
             version = "dev.${git.getCommitHash()}"
         break
         case 'build':
