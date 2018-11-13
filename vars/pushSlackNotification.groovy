@@ -25,7 +25,7 @@ Void call(String buildStatus, String context='none') {
  * @return notification to send as a string
  */
 String buildNotification(String buildStatus, String context) {
-    String upperCaseBuildName = getShortBuildName().toUpperCase()
+    String upperCaseBuildName = getBuildName().toUpperCase()
     String capitalizedBuildStatus = buildStatus.toLowerCase().capitalize()
     String extBuildStatus = "*" + upperCaseBuildName + ", Build #${env.BUILD_NUMBER}:* <${env.RUN_DISPLAY_URL}|${capitalizedBuildStatus}>"
     String notifContext = "*Context:* " + context
@@ -178,4 +178,18 @@ String getDeployEnv() {
     }
 
     return environment
+}
+
+/**
+ * Create a jenkins based build tag
+ * @param numberOfDirectories
+ */
+String getBuildName() {
+    parts = env.JOB_URL.replaceAll("/", "").split('job')
+
+    if (parts.size() > 1) {
+        numberOfDirs = Math.min(numberOfDirectories, parts.size())
+        parts = parts.takeRight(numberOfDirs)
+    }
+    return parts.join('-')
 }

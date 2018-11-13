@@ -8,6 +8,8 @@
  */
 Void call(String imageName, String imageTag,  dockerFilePath='.') {
 
+    //@TODO implement kaniko centric container image build.
+
     hostName = 'nameOfTheContainerHost_AsDefinedined_inJekinsInstance'
     repository = 'therepository_underwhich_store_your_docker_images'
 
