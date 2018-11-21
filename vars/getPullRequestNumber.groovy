@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 /**
 * Retrieve the current pull request number
 */

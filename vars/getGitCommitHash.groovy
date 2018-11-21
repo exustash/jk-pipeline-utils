@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 /**
  * Get the short format commit hash of the current commit
  */

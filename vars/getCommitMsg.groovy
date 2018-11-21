@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 /**
  * Get the git message of the current commit
  */

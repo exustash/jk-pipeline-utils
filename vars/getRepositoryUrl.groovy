@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 /**
  * retrieve the url of the repositiry associated with current build
  * @return an url string

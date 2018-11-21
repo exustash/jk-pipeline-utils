@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 /**
  * Get the current branch name
  */
