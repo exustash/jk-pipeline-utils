@@ -9,9 +9,9 @@ matrix:
 
 install: make code.build
 
-before_script: make code.lint
+before_script: make unit.test
 
-script: make test.unit
+script: make unit.test
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
