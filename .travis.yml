@@ -7,7 +7,11 @@ matrix:
     - jdk: openjdk11
     - jdk: openjdk10
 
-install: make deps.install
+install: make code.build
+
+before_script: make code.lint
+
+script: make test.unit
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -15,6 +19,3 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-
-
-script: make code.lint
