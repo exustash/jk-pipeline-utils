@@ -9,7 +9,7 @@ matrix:
 
 install: make code.build
 
-before_script: make unit.test
+before_script: make code.lint
 
 script: make unit.test
 

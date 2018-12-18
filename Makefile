@@ -20,13 +20,13 @@ help:
 	@grep -E '[a-zA-Z\.\-]+:.*?@ .*$$' $(MAKEFILE_LIST)| sort | tr -d '#'  | awk 'BEGIN {FS = ":.*?@ "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 #build-code: ##@ compile and/or install dependencies
-build.code:
+code.build:
 	$(exec) gradle  build -x test -x check
 
 #lint-code: ##@ static analysis for code style violations
-lint.code:
+code.lint:
 	$(exec) gradle check
 
 #test-unit: ##@ run unit test suite against source
-test.unit:
+unit.test:
 	$(exec) gradle test
