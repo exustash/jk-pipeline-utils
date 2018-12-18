@@ -2,11 +2,6 @@
 
 language: groovy
 
-matrix:
-  include:
-    - jdk: openjdk11
-    - jdk: openjdk10
-
 install: make code.build
 
 before_script: make code.lint
