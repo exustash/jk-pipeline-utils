@@ -6,8 +6,8 @@ matrix:
   include:
     - jdk: openjdk11
     - jdk: openjdk10
-    - jdk: oraclejdk9
-    - jdk: oraclejdk8
+
+install: make deps.install
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -15,3 +15,6 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+
+
+script: make code.lint
