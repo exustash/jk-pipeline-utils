@@ -21,7 +21,7 @@ help:
 
 #build-code: ##@ compile and/or install dependencies
 code.build:
-	$(exec) gradle  build -x test -x check
+	$(exec) gradle  assemble
 
 #lint-code: ##@ static analysis for code style violations
 code.lint:
