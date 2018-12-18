@@ -7,7 +7,7 @@ Void call(Closure body) {
 
 Map getRegistryCreds() {
    withCredentials([usernamePassword(
-       credentialsId: 'dockerHub', //change this to fit theregistry  credential Id in your jenkins instance
+       credentialsId: 'dockerHub', //change this to fit the registry  credential Id in your jenkins instance
        usernameVariable: 'USERNAME',
        passwordVariable: 'PASSWORD')
    ]) {
