@@ -10,9 +10,6 @@ Void call(String imageName, String imageTag,  dockerFilePath='.') {
 
     //@TODO implement kaniko centric container image build.
 
-    hostName = 'nameOfTheContainerHost_AsDefinedined_inJekinsInstance'
-    repository = 'therepository_underwhich_store_your_docker_images'
-
     reportTaskStatus("pipeline/task/image.build", "Task image.build is runing", 'PENDING')
     try {
         withDockerHost("hostName") {
@@ -25,5 +22,3 @@ Void call(String imageName, String imageTag,  dockerFilePath='.') {
         error("[Error!] Pipeline step BuildContainerImage execution error: ${err.message}")
     }
 }
-
-

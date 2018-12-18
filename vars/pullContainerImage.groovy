@@ -30,7 +30,6 @@ Map vaultCredentials(String robotName) {
   return secrets
 }
 
-
 /**
  * Push a container image to Dockerhub registry
  * @param  sourceImage [description]

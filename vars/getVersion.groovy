@@ -7,7 +7,7 @@
  */
 String call(String versionType='gitver') {
     println '---> construct and return a release version'
-    switch(versionType) {
+    switch (versionType) {
         case 'semver':
             version = '1.0.0'
         break
