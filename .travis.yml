@@ -2,11 +2,11 @@
 
 language: groovy
 
-install: make code.build
+install: make deps.install
 
-before_script: make code.lint
+before_script: make static.lint
 
-script: make unit.test
+script: make test.unit
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
