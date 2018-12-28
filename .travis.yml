@@ -3,7 +3,7 @@
 language: groovy
 
 env:
-  - CI=true
+  - CI=TRUE
 
 install: make deps.install
 
