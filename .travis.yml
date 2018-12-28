@@ -2,9 +2,6 @@
 
 language: groovy
 
-env:
-  - CI=TRUE
-
 install: make deps.install
 
 before_script: make static.lint

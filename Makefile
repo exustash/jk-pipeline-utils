@@ -10,7 +10,7 @@ BUILD_IMAGE=mikanolab/guardians-gradle:latest
 run = docker run --rm -it -v ${PWD}:/workspaces $(BUILD_IMAGE)
 
 ifeq ($(CI),true)
-	exec =
+	run =
 endif
 
 .DEFAULT_GOAL := tasks.list
