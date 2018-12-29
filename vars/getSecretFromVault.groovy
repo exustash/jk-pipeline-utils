@@ -5,7 +5,7 @@
  * @param  robotName [description]
  * @return           [description]
  */
-Map call(String secretPath) {
+Map call(String secretPath, file=false) {
   List secrets = [
     [
       $class: "VaultSecret",

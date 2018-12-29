@@ -7,26 +7,26 @@
 BUILD_IMAGE=mikanolab/guardians-gradle:latest
 
 #This wraps the execution of yarn task into docker for local emulation of ci context
-exec = docker run --rm -it -v ${PWD}:/workspaces $(BUILD_IMAGE)
+run = docker run --rm -it -v ${PWD}:/workspaces $(BUILD_IMAGE)
 
 ifeq ($(CI),true)
-	exec =
+	run =
 endif
 
-.DEFAULT_GOAL := help
+.DEFAULT_GOAL := tasks.list
 
-#help:	##@ List available tasks on this project
-help:
+#tasks.list:	##@ List available tasks on this project
+tasks.list:
 	@grep -E '[a-zA-Z\.\-]+:.*?@ .*$$' $(MAKEFILE_LIST)| sort | tr -d '#'  | awk 'BEGIN {FS = ":.*?@ "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-#install-deps: ##@ compile and/or install dependencies
-build-code:
-	$(exec) gradle  build -x test
+#deps.install: ##@ compile and/or install dependencies
+deps.install:
+	$(run) gradle  assemble
 
-#lint-code: ##@ static analysis for code style violations
-lint-code:
-	$(exec) gradle check
+#static.lint: ##@ static analysis for code style violations
+static.lint:
+	$(run) gradle check
 
-#test-unit: ##@ run unit test suite against source
-test-unit:
-	$(exec) gradle test
+#test.unit: ##@ run unit test suite against source
+test.unit:
+	$(run) gradle test
