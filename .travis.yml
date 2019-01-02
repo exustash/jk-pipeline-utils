@@ -2,11 +2,22 @@
 
 language: groovy
 
-install: make deps.install
+git:
+  depth: 3
 
-before_script: make static.lint
+stages:
+  - Build
+  - Tests
+  - Release
 
-script: make test.unit
+jobs:
+  include:
+    - Stage: Build
+      script: make deps.install
+    - Stage: Tests
+      script: make static.lint
+      script: make test.unit
+    - Stage: Release
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
