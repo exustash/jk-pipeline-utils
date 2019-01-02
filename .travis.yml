@@ -16,6 +16,7 @@ jobs:
       script: make deps.install
     - Stage: Tests
       script: make static.lint
+    - # tests
       script: make test.unit
     - Stage: Release
       script: echo "Deploying to GitHub releases ..."
