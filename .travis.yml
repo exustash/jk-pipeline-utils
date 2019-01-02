@@ -2,9 +2,6 @@
 
 language: groovy
 
-git:
-  depth: 3
-
 stages:
   - Build
   - Tests
