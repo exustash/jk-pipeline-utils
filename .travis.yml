@@ -4,12 +4,13 @@ language: groovy
 
 jobs:
   include:
-    - stage: Build
+    - stage: "Build"
       script: make deps.install
-    - stage: Tests
+    - stage: "Tests"
+      name: "Static Lint"
       script: make static.lint
-    - # tests
-      script: make test.unit
+    - script: make test.unit
+      name: "Unit Tests"
     - stage: Release
       script: echo "Deploying to GitHub releases ..."
 
