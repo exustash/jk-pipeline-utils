@@ -2,20 +2,15 @@
 
 language: groovy
 
-stages:
-  - Build
-  - Tests
-  - Release
-
 jobs:
   include:
-    - Stage: Build
+    - stage: Build
       script: make deps.install
-    - Stage: Tests
+    - stage: Tests
       script: make static.lint
     - # tests
       script: make test.unit
-    - Stage: Release
+    - stage: Release
       script: echo "Deploying to GitHub releases ..."
 
 before_cache:
