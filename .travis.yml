@@ -2,6 +2,11 @@
 
 language: groovy
 
+stages:
+  - Build
+  - Tests
+  - Release
+
 jobs:
   include:
     - stage: "Build"
