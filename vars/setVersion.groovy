@@ -1,30 +1,42 @@
 #!/usr/bin/env groovy
 
 /**
- * Create a version string based on scheme provided as param
- * @param versionning scheme
+ * Create a version string based on scheme pattern type provided as string param
+ * @param versionType versionning scheme
  * @return the version number as a string
  */
-String call(String versionType='gitver') {
-    println '---> construct and return a release version'
+String call(String versionType='build') {
+    println "---> construct and return a release version based the ${versionType} schema"
     switch (versionType) {
         case 'semver':
-            version = '1.0.0'
-        break
-        case 'buildver':
+            version = generateReleaseTag()
+            break
+        case 'build':
             version = getBuildVer()
-        break
+            break
+        case 'commit':
+            version = getGitCommitHash()
+            break
         default:
-            version = git.getCommitHash()
-        break
+            version = getGitCommitHash()
+            break
     }
 
     return version
 }
 
 String getBuildVer() {
-    String commitDate = git.getCommitDate()
-    String commitHash = git.getCommitHash()
-
+    String commitDate = sh(returnStdout: true, script: "git log -n 1 --date=format:'%y%m%d' --pretty=format:'%cd'").trim()
+    String commitHash = getGitCommitHash()
     return "${commitDate}.${env.BUILD_NUMBER}.${commitHash}"
+}
+
+String generateReleaseTag() {
+    getAutoTagScript()
+    return sh(returnStdout: true, script: "./release bump_version").trim()
+}
+
+Void getAutoTagScript() {
+    writeFile file: 'release', text: libraryResource('scripts/release.util.sh')
+    sh returnStdout: false, script: 'chmod +x release'
 }
