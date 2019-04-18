@@ -4,9 +4,6 @@ jk-shared-lib is [Jenkins Shared Library](https://jenkins.io/doc/book/pipeline/s
 
 ## Usage
 
-
-### Example
-
 In order to load shared libraries, the pipeline described in the Jenkinsfile is required to use the @Library annotation, followed by the name of the library and the version/branch to be loaded (optional)
 
 ```groovy
