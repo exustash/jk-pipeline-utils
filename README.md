@@ -27,4 +27,4 @@ Unit and functional testing will be available soon.
 
 
 ## Links
-a list of resources to deep dive into this topic
+A list of resources to deep dive into this topic
