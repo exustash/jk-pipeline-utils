@@ -14,8 +14,8 @@ jobs:
     - stage: "Tests"
       name: "Static Lint"
       script: make static.lint
-    - script: make test.unit
-      name: "Unit Tests"
+    - #script: make test.unit
+      #name: "Unit Tests"
     - stage: Release
       script: echo "Deploying to GitHub releases ..."
 
