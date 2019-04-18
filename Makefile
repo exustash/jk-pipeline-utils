@@ -21,7 +21,7 @@ tasks.list:
 
 #deps.install: ##@ compile and/or install dependencies
 deps.install:
-	$(run) gradle  assemble
+	$(run) gradle assemble
 
 #static.lint: ##@ static analysis for code style violations
 static.lint:
