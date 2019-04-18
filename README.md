@@ -22,5 +22,9 @@ Every function is referenced this way:
  - **Return Value:** the value returned by the setp if any
  - **Example:** an example of the setp usage in a pipeline
 
+## Testing 
+Unit and functional testing will be available soon.
+
 
 ## Links
+a list of resources to deep dive into this topic
