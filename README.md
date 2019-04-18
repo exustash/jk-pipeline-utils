@@ -13,7 +13,7 @@ jk-shared-lib is [Jenkins Shared Library](https://jenkins.io/doc/book/pipeline/s
 ```
 
 ## Documentation
-All available function in this library are documented [here](doc/functions.md)
+All available function in this library are documented [here](doc/stepsdoc.rst)
 
 Every function is referenced this way:
  - **Signature:** function signature of the setp
