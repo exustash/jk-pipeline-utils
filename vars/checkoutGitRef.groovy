@@ -75,7 +75,7 @@ String retrievePrNumber(String pullRequest) {
  * Abort execution of checkoutPullRequest if env.GITHUB_TOKEN is not set.
  */
 String breakIfGithubTokenNotSet() {
-    if(!env.GITHUB_TOKEN) {
+    if (!env.GITHUB_TOKEN) {
         error("[ERR!] The Github Token is not set. This step cannot proceed")
     }
 }
