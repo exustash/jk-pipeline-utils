@@ -13,7 +13,7 @@ jobs:
       script: make deps.install
     - stage: "Tests"
       name: "Static Lint"
-      script: make test.unit
+      script: make static.lint
     #- script: make test.unit
       #name: "Unit Tests"
     - stage: Release
