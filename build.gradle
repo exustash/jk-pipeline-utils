@@ -12,6 +12,7 @@ plugins {
 }
 
 dependencies {
+    compile 'org.codehaus.groovy:groovy-templates:2.5.5'
     compile 'org.kohsuke.stapler:stapler:1.254'
     compile 'com.cloudbees:groovy-cps:1.24'
     compile 'org.dom4j:dom4j:2.1.0'
