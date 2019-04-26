@@ -2,23 +2,30 @@
 
 language: groovy
 
-stages:
-  - Build
-  - Tests
-  - Release
+env:
+  # Latest Groovy 2.5.x stable
+  - GROOVY_VERSION="2.5.6"
+  # Next Groovy 2.4.x release
+  - GROOVY_VERSION="2.4.16"
 
-jobs:
-  include:
-    - stage: "Build"
-      script: make deps.install
-    - stage: "Tests"
-      name: "Static Lint"
-      script: make static.lint
-    - stage: Release
-      script: echo "Deploying to GitHub releases ..."
+matrix:
+  allow_failures:
+    - env: GROOVY_VERSION="2.5.1"
+
+branches:
+  only:
+    - master
+
+
+#build library
+#gradle doesn't have a retry for assembling dependencies so here's one in bash
+install: make deps.install
+script: make static.lint
+
 
 before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock*
+
 cache:
   directories:
     - $HOME/.gradle/caches/
