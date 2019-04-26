@@ -6,12 +6,3 @@ language: groovy
 #gradle doesn't have a retry for assembling dependencies so here's one in bash
 #install: make deps.install
 #script: make static.lint
-
-
-before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock*
-
-cache:
-  directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
