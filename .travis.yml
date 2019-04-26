@@ -19,8 +19,8 @@ branches:
 
 #build library
 #gradle doesn't have a retry for assembling dependencies so here's one in bash
-install: make deps.install
-script: make static.lint
+#install: make deps.install
+#script: make static.lint
 
 
 before_cache:
