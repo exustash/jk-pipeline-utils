@@ -1,4 +1,4 @@
 version: "2"
 plugins:
-  codenarc:
+  checkstyle:
     enabled: true
