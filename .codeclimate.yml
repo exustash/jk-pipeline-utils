@@ -1,3 +1,5 @@
+version: "2"
+
 plugins:
   codenarc:
     enabled: true
