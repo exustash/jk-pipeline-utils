@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-import java.net.URLDecoder
 
 /**
  * Create a jenkins based build tag
@@ -11,9 +10,9 @@ import java.net.URLDecoder
   decodedJobUrl = URLDecoder.decode(decodedJobUrl, "UTF-8")
   parts = decodedJobUrl.replaceAll("/", "").split('job')
 
-  if(parts.size() > 1) {
-    numberOfDirectories = Math.min(numberOfDirectories, parts.size())
-    parts = parts.takeRight(numberOfDirectories)
+  if (parts.size() > 1) {
+    numberOfDirs = Math.min(numberOfDirectories, parts.size())
+    parts = parts.takeRight(numberOfDirs)
   }
 
   return parts.join('-')
