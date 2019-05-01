@@ -25,4 +25,4 @@ plugins:
       MD013:
         enabled: false
   shellcheck:
-    enabled: true
+enabled: true
