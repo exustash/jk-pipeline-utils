@@ -27,7 +27,7 @@ deps.install:
 
 #static.lint: ##@ static analysis for code style violations
 static.lint:
-	$(run) gradle check
+	$(run) gradle check --scan
 
 #test.unit: ##@ run unit test suite against source
 test.unit:
