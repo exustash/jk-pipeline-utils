@@ -1,8 +1,49 @@
 version: "2"
-
+checks:
+  argument-count:
+    enabled: true
+    config:
+      threshold: 5
+  complex-logic:
+    enabled: true
+    config:
+      threshold: 8
+  file-lines:
+    enabled: true
+    config:
+      threshold: 350
+  method-complexity:
+    enabled: true
+    config:
+      threshold: 8
+  method-count:
+    enabled: true
+    config:
+      threshold: 20
+  method-lines:
+    enabled: true
+    config:
+      threshold: 50
+  nested-control-flow:
+    enabled: true
+    config:
+      threshold: 8
+  return-statements:
+    enabled: true
+    config:
+      threshold: 6
+  similar-code:
+    enabled: true
+    config:
+      threshold: #language-specific defaults. overrides affect all languages.
+  identical-code:
+    enabled: true
+    config:
+      threshold: #language-specific defaults. overrides affect all languages.
 plugins:
   codenarc:
     enabled: true
+    channel: "stable"
   editorconfig:
     enabled: true
     config:
