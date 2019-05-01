@@ -59,3 +59,12 @@ buildScan {
     termsOfServiceUrl = 'https://gradle.com/terms-of-service'
     termsOfServiceAgree = 'yes'
 }
+
+codenarcMain {
+    ignoreFailures false
+    configFile file('config/codenarc/codenarc.xml')
+
+    maxPriority1Violations 0
+    maxPriority2Violations 10
+    maxPriority3Violations 20
+}
