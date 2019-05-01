@@ -43,23 +43,3 @@ checks:
 plugins:
   codenarc:
     enabled: true
-    channel: "stable"
-  editorconfig:
-    enabled: true
-    config:
-      editorconfig: .editorconfig
-    exclude_patterns:
-    - "doc/**/images/"
-  fixme:
-    enabled: true
-    config:
-      strings:
-      - TODO
-      - FIXME
-  markdownlint:
-    enabled: true
-    checks:
-      MD013:
-        enabled: false
-  shellcheck:
-    enabled: true
