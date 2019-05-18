@@ -8,9 +8,9 @@ In order to load shared libraries, the pipeline described in the Jenkinsfile is 
 
 ```groovy
 #!/usr/bin/env groovy
-@Library(value="jk-shared-lib@master", changelog=false) _
-@Library(value="jk-shared-lib", changelog=false) _
-@Library(value="jk-shared-lib@1.3", changelog=false) _
+@Library(value="jk-pipeline-utils@master", changelog=false) _
+@Library(value="jk-pipeline-utils", changelog=false) _
+@Library(value="jk-pipeline-utils@1.3", changelog=false) _
 ```
 
 ## Documentation
