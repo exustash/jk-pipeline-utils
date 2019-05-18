@@ -1,5 +1,5 @@
 # Jenkins Shared Library
-jk-shared-lib is [Jenkins Shared Library](https://jenkins.io/doc/book/pipeline/shared-libraries/) which contains a wide range of functionalities accessible as reusable Jenkins pipeline steps, which pipeline code reduce redundacy accross project and make sure Jenkisnfiles are as DRY as possible. You can use the functions provided by this library to create complex pipelines while preserving readability and simplicity of your Jekinsfile.
+jk-piepline-utils [Jenkins Shared Library](https://jenkins.io/doc/book/pipeline/shared-libraries/) which contains a wide range of functionalities accessible as reusable Jenkins pipeline steps, which pipeline code reduce redundacy accross project and make sure Jenkisnfiles are as DRY as possible. You can use the functions provided by this library to create complex pipelines while preserving readability and simplicity of your Jekinsfile.
 
 
 ## Usage
